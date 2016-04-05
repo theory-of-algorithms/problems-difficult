@@ -1,59 +1,97 @@
-%!TEX root = parent.tex
+%!TEX root = problems.tex
 
-\printanswers
+%\printanswers
 
-\noindent
-This is the introduction~\cite{knuthwebsite}.
+%\noindent
+%This is the introduction~\cite{knuthwebsite}.
 
 \begin{questions}
 
+
 \question
-Is this a question?
+Explain the terms conjunctive normal form and disjunctive normal form.
 \begin{solution}
-\begin{minted}{python}
-if it is:
-  print answer
-\end{minted}
+
 \end{solution}
 
 
 \question
-Is this another question?
+Convert the following expressiona to Conjunctive Normal Form.
+\begin{parts}
+  \part $a \vee b$
+  \part $a \wedge b$
+  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
+  \part $(a  \wedge   b) \vee (c  \wedge  d)$
+  \part $(a \vee b)  \wedge  (c \vee d)$
+\end{parts}
 \begin{solution}
-Another solution.
-\begin{tikzpicture}
-\begin{scope}[every node/.style={circle,thick,draw}]
-\node (1) at (0,0) {1};
-\node (2) at (2,0) {2};
-\end{scope}
-\begin{scope}[every edge/.style={draw=black,thick}]
-\path (1) edge (2);
-\end{scope}
-\end{tikzpicture}
+\begin{parts}
+  \part $a \vee b$
+  \part $a \wedge b$
+  \part $(a \vee \neg b \vee \neg d) \wedge (b \vee c \vee \neg d)$
+  \part $(a\vee c) \wedge (a\vee d) \wedge (b\vee c) \wedge (b\vee d)$
+  \part $(a \vee b)  \wedge  (c \vee d)$
+\end{parts}
+\end{solution}
+
+\question
+Convert the following proposition to Disjunctive Normal Form.
+\begin{parts}
+  \part $a \vee b$
+  \part $a \wedge b$
+  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
+  \part $(a \wedge b) \vee (c \wedge d)$
+  \part $(a \vee b)  \wedge  (c \vee d)$
+\end{parts}
+\begin{solution}
+\begin{parts}
+  \part $a \vee b$
+  \part $a \wedge b$
+  \part $(a \wedge b) \vee (\neg b \wedge c) \vee \neg d$
+  \part $(a  \wedge  b) \vee (c  \wedge  d)$
+  \part $(a \wedge c)\vee(a \wedge d)\vee(b \wedge c)\vee(b \wedge d)$
+\end{parts}
 \end{solution}
 
 
 \question
-Here's a table:
-\begin{table}[H]
-  \centering
-  \begin{tabular}{x{1.5cm}x{1.5cm}x{1.5cm}x{1.5cm}x{1.5cm}}
-    \toprule
-    State	& Input	& Write & Move & Next \\
-    \midrule
-    \multirow{3}{*}{1}
-      & B &	0 &	R & 2 \\
-      & 0	& 0 & R &	2 \\
-      & 1	& 0 &	R &	2 \\
-    \midrule
-    \multirow{3}{*}{2}
-      & B & 1 & R & 1 \\
-      & 0	& 1 &	R &	1 \\
-      & 1 & 1 &	R &	1 \\
-    \bottomrule
-    \hline
-  \end{tabular}
-\end{table}
+Determine if there is a realisation of the following proposition that makes the clause true.
+\begin{parts}
+  \part $a \vee b$
+  \part $a \wedge b$
+  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
+  \part $(a  \wedge   b) \vee (c  \wedge  d)$
+  \part $(a \vee b)  \wedge  (c \vee d)$
+\end{parts}
 
+\begin{solution}
+
+\end{solution}
+
+
+\question
+Explain the SAT problem.
+\begin{solution}
+
+\end{solution}
+
+\question
+Explain the 3-SAT problem.
+\begin{solution}
+
+\end{solution}
+
+\question
+Explain how to prove that a problem is NP-complete.
+\begin{solution}
+
+\end{solution}
+
+
+\question
+Prove that 3-SAT is NP-complete. You may assume that SAT is NP-complete.
+\begin{solution}
+
+\end{solution}
 
 \end{questions}
