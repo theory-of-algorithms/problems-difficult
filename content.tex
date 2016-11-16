@@ -1,78 +1,17 @@
 %!TEX root = problems.tex
 
-\printanswers
+% \printanswers
 
-%\noindent
-%This is the introduction~\cite{knuthwebsite}.
+\noindent
+This problem sheet is about NP-complete problems~\cite{sipserbook}.
 
 \begin{questions}
 
+\question
+Explain what a decision problem is.
 
 \question
-Explain the terms conjunctive normal form and disjunctive normal form.
-\begin{solution}
-As in notes.
-\end{solution}
-
-
-\question
-Convert the following expressions to Conjunctive Normal Form.
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
-  \part $(a  \wedge   b) \vee (c  \wedge  d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
-\begin{solution}
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $(a \vee \neg b \vee \neg d) \wedge (b \vee c \vee \neg d)$
-  \part $(a\vee c) \wedge (a\vee d) \wedge (b\vee c) \wedge (b\vee d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
-\end{solution}
-
-\question
-Convert the following expressions to Disjunctive Normal Form.
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
-  \part $(a \wedge b) \vee (c \wedge d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
-\begin{solution}
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $(a \wedge b) \vee (\neg b \wedge c) \vee \neg d$
-  \part $(a  \wedge  b) \vee (c  \wedge  d)$
-  \part $(a \wedge c)\vee(a \wedge d)\vee(b \wedge c)\vee(b \wedge d)$
-\end{parts}
-\end{solution}
-
-
-\question
-Determine if there is a setting of the variables in the following expression that makes the evaluation of the expression true.
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
-  \part $(a  \wedge   b) \vee (c  \wedge  d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
-
-\begin{solution}
-\begin{parts}
-  \part $(a,b) = (1,1)$
-  \part $(a,b) = (1,1)$
-  \part $(a,b,c,d) = (1,1,1,0)$
-  \part $(a,b,c,d) = (1,1,1,0)$
-  \part $(a,b,c,d) = (1,1,1,0)$
-\end{parts}
-\end{solution}
+Explain what the NP complexity class is. 
 
 
 \question

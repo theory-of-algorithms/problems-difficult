@@ -1,5 +1,10 @@
 \documentclass[addpoints,12pt]{exam}
 
+\makeatletter
+\expandafter\providecommand\expandafter*\csname ver@framed.sty\endcsname
+{2003/07/21 v0.8a Simulated by exam}
+\makeatother
+
 \usepackage{xcolor}
 \usepackage{minted}
 \usepackage[utf8]{inputenc}
@@ -25,7 +30,7 @@
 \renewcommand{\refname}{\selectfont\normalsize References} 
 \pagestyle{headandfoot}
 
-\header{\textbf{Problem Sheet: NP}}{}{Theory of Algorithms}
+\header{\textbf{Problem Sheet: NP-completeness}}{}{Theory of Algorithms}
 \footer{}{Page \thepage\ of \numpages}{}
 \marksnotpoints
 \pointsinrightmargin
