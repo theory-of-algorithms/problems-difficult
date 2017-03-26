@@ -14,6 +14,7 @@
 \usepackage{lmodern}
 \usepackage{multirow}
 \usepackage{booktabs}
+\usepackage{amssymb}
 \usepackage{array}
 \usepackage{adjustbox}
 \usepackage{upquote}
@@ -39,7 +40,71 @@
 \end{coverpages}
 
 \begin{document}
-\input{content.tex}
+
+%\printanswers
+
+\noindent
+This problem sheet is about difficult computational problems~\cite{sipserbook}.
+
+
+\begin{questions}
+
+
+\question
+  Explain what the set PRIMES is, and the decision problem related to it.
+  \begin{solution}
+  PRIMES is the set $\{ i \vert i \ \textrm{is prime}  \}$, containing all of the prime numbers.
+  \end{solution}
+
+
+\question
+  Write a Racket function that decides PRIMES.
+  \begin{solution}
+    \begin{minted}{java}
+
+    \end{minted}
+  \end{solution}
+
+\question
+  Write a Java function that decides PRIMES.
+  \begin{solution}
+    \begin{minted}{java}
+
+    \end{minted}
+  \end{solution}
+
+
+\question
+  Explain what is meant by SUBSETSUM, and the decision problem related to it.
+
+\question
+  Write a function in Racket that decides SUBSETSUM.
+
+\question
+  Write a function in Java that decides SUBSETSUM.
+
+\question
+  Explain the integer factorisation problem and why it is important in modern cryptography.
+
+\question
+  Explain what is meant by SAT.
+
+  \begin{solution}
+  As in notes.
+  \end{solution}
+
+\question
+  Explain the 3-SAT decision problem.
+  \begin{solution}
+  As in notes.
+  \end{solution}
+
+
+
+\end{questions}
+
+
+
 \bibliographystyle{plain}
 \bibliography{bibliography}
 \end{document}
