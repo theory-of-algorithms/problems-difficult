@@ -41,7 +41,7 @@
 
 \begin{document}
 
-%\printanswers
+\printanswers
 
 \noindent
 This problem sheet is about difficult computational problems~\cite{sipserbook}.
@@ -49,158 +49,188 @@ This problem sheet is about difficult computational problems~\cite{sipserbook}.
 
 \begin{questions}
 
-
-\question
-  Write a Racket function that decides PRIMES.
-  \begin{solution}
-    \begin{minted}{java}
-
-    \end{minted}
-  \end{solution}
-
-\question
-  Write a Java function that decides PRIMES.
-  \begin{solution}
-    \begin{minted}{java}
-
-    \end{minted}
-  \end{solution}
-
-
 \question
   Explain what is meant by SUBSETSUM, and the decision problem related to it.
+  \begin{solution}
+    SUBSETSUM is the set of all sets of integers that have a subset the sum of all whose elements is zero.
+    $$ \textrm{SUBSETSUM} = \{ S \mid S \subseteq \mathbb{Z}, \exists T \subseteq S: \sum_{i \in T} i = 0 \} $$
+  \end{solution}
+
 
 \question
   Write a function in Racket that decides SUBSETSUM.
+  \begin{solution}
+    \begin{minted}{scheme}
+(define (subsetsum l)
+  (not (null? (filter
+    (lambda (y) (= 0 (apply + y)))
+    (filter
+      (lambda (x) (not (null? x)))
+      (combinations l))))))
+    \end{minted}
+  \end{solution}
+
 
 \question
   Write a function in Java that decides SUBSETSUM.
+  \begin{solution}
+    \begin{minted}{java}
+// From: www.geeksforgeeks.org/dynamic-programming-subset-sum-problem
+static boolean isSubsetSum(int set[], int n, int sum) {
+  if (sum == 0)
+    return true;
+  if (n == 0 && sum != 0)
+    return false;
+
+  if (set[n-1] > sum)
+    return isSubsetSum(set, n-1, sum);
+  
+  return isSubsetSum(set, n-1, sum) || 
+            isSubsetSum(set, n-1, sum-set[n-1]);
+}
+    \end{minted}
+  \end{solution}
+
 
 \question
   Explain the integer factorisation problem and why it is important in modern cryptography.
+  \begin{solution}
+    The integer factorisation problem is the problem of factorising a natural number (greater than one) into a product of prime numbers.
+    Every such number is a distinct product of primes, up to re-organsing the order of multiplication.
+    For instance, the only way to factorise the number 561 into a product of primes is $3 \times 11 \times 17$.
+
+    The complexity of integer factorisation is not know.
+    No polynomial time algorithm has been developed, and it is not known if the problem is NP-complete.
+    Modern asymmetric key cryptgraphic systems rely on the factorisation of a product of two similar-sized prime numbers not being efficiently possible.
+    The fact that PRIMES is in P means that we can find two similar sized prime numbers efficiently.
+    Modern cryptography exploits these two facts.
+  \end{solution}
+
 
 \question
   Explain what is meant by SAT.
-
   \begin{solution}
-  As in notes.
+    SAT is the set of all Boolean formulas where some setting of the constituent Boolean variables satisfies the formula.
+    For instance, the formula $a \land (b \lor c)$ is satisfiable (set $a$ and $b$ to true), but $a \land \neg a$ is not.
   \end{solution}
 
 \question
   Explain the 3-SAT decision problem.
   \begin{solution}
-  As in notes.
+   3-SAT is the set of all satisfiable Boolean formulas in Conjunctive Normal Form where each clause contains three literals.
+   The decision problem related to 3-SAT is the problem of deciding 3-SAT.
+   Sometimes this is called the 3-SAT decision problem.
+  \end{solution}
+
+\question
+  Explain the terms conjunctive normal form and disjunctive normal form.
+  \begin{solution}
+    A Boolean formula is in Conjunctive Normal Form (CNF) if it is a conjunction of disjunctions.
+    That is, it is a series of clauses with ands between them, where each clauses is a series of literals with ors between them.
+    A literal is a variable or its negation.
+    For example, the following formula is in CNF.
+      $$ (a \lor b \lor neg c) \land (\neg a \lor c) $$
+    
+    Disjunctive Normal Form (DNF) is a disjunction of conjunctions -- the ors are outside the brackets, and the ands are inside.
+    For example, the following is a formula in DNF.
+      $$ (a \land b) \lor (\neg a \land \neg b) $$
   \end{solution}
 
 
 \question
-Explain the subset sum problem, and the brute-force approach to solving it.
+  Convert the following expressions to Conjunctive Normal Form.
+  \begin{parts}
+    \part $a \vee b$
+    \part $a \wedge b$
+    \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
+    \part $(a  \wedge   b) \vee (c  \wedge  d)$
+    \part $(a \vee b)  \wedge  (c \vee d)$
+  \end{parts}
+  \begin{solution}
+  \begin{parts}
+    \part $a \vee b$
+    \part $a \wedge b$
+    \part $(a \vee \neg b \vee \neg d) \wedge (b \vee c \vee \neg d)$
+    \part $(a\vee c) \wedge (a\vee d) \wedge (b\vee c) \wedge (b\vee d)$
+    \part $(a \vee b)  \wedge  (c \vee d)$
+  \end{parts}
+  \end{solution}
 
+\question
+  Convert the following expressions to Disjunctive Normal Form.
+  \begin{parts}
+    \part $a \vee b$
+    \part $a \wedge b$
+    \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
+    \part $(a \wedge b) \vee (c \wedge d)$
+    \part $(a \vee b)  \wedge  (c \vee d)$
+  \end{parts}
+  \begin{solution}
+  \begin{parts}
+    \part $a \vee b$
+    \part $a \wedge b$
+    \part $(a \wedge b) \vee (\neg b \wedge c) \vee \neg d$
+    \part $(a  \wedge  b) \vee (c  \wedge  d)$
+    \part $(a \wedge c)\vee(a \wedge d)\vee(b \wedge c)\vee(b \wedge d)$
+  \end{parts}
+  \end{solution}
 
 
 \question
-Explain the INTFAC problem.
-
-\question
-Explain the SAT problem.
-\begin{solution}
-As in notes.
-\end{solution}
-
-\question
-Explain the 3-SAT problem.
-\begin{solution}
-As in notes.
-\end{solution}
-
-
-
-\question
-Explain the terms conjunctive normal form and disjunctive normal form.
-\begin{solution}
-As in notes.
-\end{solution}
+  Determine if there is a setting of the variables in the following expression that makes the evaluation of the expression true.
+  \begin{parts}
+    \part $a \vee b$
+    \part $a \wedge b$
+    \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
+    \part $(a  \wedge   b) \vee (c  \wedge  d)$
+    \part $(a \vee b)  \wedge  (c \vee d)$
+  \end{parts}
+  \begin{solution}
+  \begin{parts}
+    \part $(a,b) = (1,1)$
+    \part $(a,b) = (1,1)$
+    \part $(a,b,c,d) = (1,1,1,0)$
+    \part $(a,b,c,d) = (1,1,1,0)$
+    \part $(a,b,c,d) = (1,1,1,0)$
+  \end{parts}
+  \end{solution}
 
 
 \question
-Convert the following expressions to Conjunctive Normal Form.
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
-  \part $(a  \wedge   b) \vee (c  \wedge  d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
-\begin{solution}
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $(a \vee \neg b \vee \neg d) \wedge (b \vee c \vee \neg d)$
-  \part $(a\vee c) \wedge (a\vee d) \wedge (b\vee c) \wedge (b\vee d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
-\end{solution}
+  Explain how to prove that a decision problem is NP-complete.
+  \begin{solution}
+    A decision problem is NP-complete if it is noth NP-hard and in NP itself.
+    Thus, to show a decision problem is NP-complete we must show that it satisfies both of these properties.
+    A decision problem is in NP if an instance can be verified in polynomial time, which is the same as being decidable in polynomial time by a non-determinisitic Turing machine.
 
-\question
-Convert the following expressions to Disjunctive Normal Form.
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
-  \part $(a \wedge b) \vee (c \wedge d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
-\begin{solution}
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $(a \wedge b) \vee (\neg b \wedge c) \vee \neg d$
-  \part $(a  \wedge  b) \vee (c  \wedge  d)$
-  \part $(a \wedge c)\vee(a \wedge d)\vee(b \wedge c)\vee(b \wedge d)$
-\end{parts}
-\end{solution}
+    A problem is NP-hard if every problem in NP can be reduced to it in polynomial time.
+    A reduction from problem B to problem A is an algorithm for converting any instance of B to an instance of A.
+    The easiest way to show a problem in NP is NP-complete is to reduce an NP-complete problem to it in polynomial time to .
+  \end{solution}
 
 
 \question
-Determine if there is a setting of the variables in the following expression that makes the evaluation of the expression true.
-\begin{parts}
-  \part $a \vee b$
-  \part $a \wedge b$
-  \part $((a \wedge b) \vee ( \neg b \wedge c)) \vee  \neg d$
-  \part $(a  \wedge   b) \vee (c  \wedge  d)$
-  \part $(a \vee b)  \wedge  (c \vee d)$
-\end{parts}
+  Prove that 3-SAT is NP-complete. You may assume that SAT is NP-complete.
+  \begin{solution}
+    The set 3-SAT is a subset of SAT, and SAT is in NP.
+    Thus, 3-SAT is in NP.
 
-\begin{solution}
-\begin{parts}
-  \part $(a,b) = (1,1)$
-  \part $(a,b) = (1,1)$
-  \part $(a,b,c,d) = (1,1,1,0)$
-  \part $(a,b,c,d) = (1,1,1,0)$
-  \part $(a,b,c,d) = (1,1,1,0)$
-\end{parts}
-\end{solution}
-
-
-\question
-Explain how to prove that a problem is NP-complete.
-\begin{solution}
-As in notes.
-\end{solution}
-
-
-\question
-Prove that 3-SAT is NP-complete. You may assume that SAT is NP-complete.
-\begin{solution}
-As in notes.
-\end{solution}
+    We can convert an instance of SAT to an instance of 3-SAT in the following way.
+    First convert the formula to CNF.
+    Then convert any one-literal clause $a$ of the SAT formula to the following 3-SAT formula:
+      $$(a \lor u_1 \lor u_2) \land (a \lor u_1 \lor \neg u_2) \land (a \lor \neg u_1 \lor u_2) \land (a \lor \neg u_1 \lor \neg u_2).$$
+    Convert any two-variable clause $a \lor b$ to:
+      $$(a \lor b \lor u_1) \land (a \lor b \lor \neg u_1)).$$
+    Any three-variable clause can be left as-is.
+    Convert any clause with more than three variables $a \lor b \lor c \lor \ldots$ to:
+      $$(a \lor b \lor u_1) \land (c \lor \neg u_1 \lor u_2)) \land \ldots \land (i \lor \neg u_{n-4} \lor u_{n-3}) \land (j \lor k \lor \neg u_{n-3}).$$
+    Now the formula is in 3-CNF.
+    This reduction is polynomial in time, because the output is at most three times as long as the input.
+  \end{solution}
 
 
 
 \end{questions}
-
-
-
 \bibliographystyle{plain}
 \bibliography{bibliography}
 \end{document}
