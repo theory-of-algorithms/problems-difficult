@@ -1,4 +1,4 @@
-# Problem Sheet: NP-completeness
+# Problem Sheet: Difficult problems
 
 This is a problem sheet for the module **Theory of Algorithms**.
 The module is taught to fourth year undergraduate students at [GMIT](http://www.gmit.ie).
